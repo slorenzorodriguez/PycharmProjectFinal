@@ -21,7 +21,7 @@ El botón '_Añadir proveedor_' nos llevará a una ventana donde se nos facilita
 
 
 El segundo botón, '_Modificar proveedor_', nos llevará a una ventana donde podremos [ver todos los proveedores](Imágenes/MenúProveedores.png) que tenemos en ese momento.
-Aquí se nos da la opción de poder modificar o eliminar cualquiera de los proveedores que queramos eligiendo cualquiera de los proveedores de la lista y acto seguido pulsando el botón 'MODIFICAR' o 'ELIMINAR'
+Aquí se nos da la opción de poder modificar o eliminar los datos de estos proveedores eligiendo cualquiera de ellos en la lista y acto seguido pulsando el botón 'MODIFICAR' o 'ELIMINAR'
 
 
 
