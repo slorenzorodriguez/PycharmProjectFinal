@@ -5,7 +5,7 @@ setup(
     version='1.0',
     author='Sergio Lorenzo Rodríguez',
     author_email='slorenzorodriguez@danielcastelao.org',
-    packages=[''],
+    packages=['Proyecto'],
     url='https://www.danielcastelao.org',
     license='GLP',
     platforms="Unix",
@@ -17,7 +17,6 @@ setup(
                 "Operating System :: Linux Ubuntu"
                 ],
     description='Final Project Pycham DI',
-    keywords="empaquetado instalador paquetes",
-    #data_files=[('datos', ['dat/datos.txt'])],
-    entry_points={'console_scripts': ['openProyect = proyecto.SerWaves: main', ], }
+    keywords="empaquetado instalador paquetes"
+    #data_files=[('datos', ['dat/datos.txt'])]
 )
