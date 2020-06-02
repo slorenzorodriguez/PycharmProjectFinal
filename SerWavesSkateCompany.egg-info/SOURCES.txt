@@ -1,0 +1,13 @@
+setup.py
+Proyecto/CrearBD.py
+Proyecto/CrearFactura.py
+Proyecto/Inventario.py
+Proyecto/NuevoProveedor.py
+Proyecto/SerWaves.py
+Proyecto/generarFactura.py
+Proyecto/generarInventario.py
+Proyecto/listaProveedores.py
+SerWavesSkateCompany.egg-info/PKG-INFO
+SerWavesSkateCompany.egg-info/SOURCES.txt
+SerWavesSkateCompany.egg-info/dependency_links.txt
+SerWavesSkateCompany.egg-info/top_level.txt
