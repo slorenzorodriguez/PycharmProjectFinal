@@ -9,14 +9,14 @@ from sqlite3 import dbapi2
 
 
 class generarInventario():
-    """Clase que genera un PDF con la lista de productos disponibles en SERWAVES .
-                Metodos:
+    """Clase que genera un PDF con la lista de productos disponíbles en SerWaves Skate Company.
+                Métodos:
                      __init__ --Constructor
         """
 
     def __init__(self):
         """Constructor de la clase que genera un informe.
-                     Esta clase genera una lista en forma de tabla con todos los datos de los productos
+                     Ésta clase genera una lista en forma de tabla con todos los datos de los productos
 
                      Parametros:
                         -No tiene

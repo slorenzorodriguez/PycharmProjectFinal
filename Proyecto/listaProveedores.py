@@ -6,10 +6,10 @@ from sqlite3 import dbapi2
 
 
 class listaProveedores(Gtk.Window):
-    """Ventana listaProveedores de SerWaves.
-                Metodos:
+    """Ventana listaProveedores de SerWaves Skate Company.
+                Métodos:
                      __init__ --Constructor
-                     inital_show -- Metodo para trabajar con la visibilidad
+                     inital_show -- Método para trabajar con la visibilidad
                      on_btnVolver_clicked -- Volver a la ventana pincipal
                      on_btnModificar_clicked -- Modificar un proveedor existente.
                      on_btnGuardar_clicked -- Guarda los cambios realizados.
@@ -17,10 +17,10 @@ class listaProveedores(Gtk.Window):
     """
 
     def __init__(self, main):
-        """Constructor de la Ventana listaProveedores de SerWaves.
+        """Constructor de la Ventana listaProveedores de SerWaves Skate Company.
             Esta ventana nos permite visualizar, modificar y eliminar los proveedores.
 
-            Parametros:
+            Parámetros:
                    :param main: recibe el objeto window del main para poder volver a la ventana principal.
 
             Excepciones:
@@ -32,11 +32,11 @@ class listaProveedores(Gtk.Window):
         builder.add_from_file("Diseño.glade")
 
         self.ventana = builder.get_object("Main")
-        ## self.set_default_size(WIDTH, HEIGHT)
+
 
         ##AÑADIMOS LA CABECERA
         cabeceira = Gtk.HeaderBar(title="Lista Proveedores")
-        cabeceira.set_subtitle("Informacion de todos los proveedores de la tienda")
+        cabeceira.set_subtitle("Información de todos los proveedores de la tienda")
         cabeceira.props.show_close_button = True
 
         self.ventana.set_titlebar(cabeceira)
@@ -120,9 +120,9 @@ class listaProveedores(Gtk.Window):
         self.inital_show(self.ventana)
 
     def inital_show(self, ventana):
-        """Este metodo se usa para jugar con la visibilidad de ciertos elemento.
+        """Este método se usa para jugar con la visibilidad de ciertos elemento.
               Pone visible todos los elementos menos la caja cajaModificar que se hara visible al
-              clicar el boton de modificar o añadir.
+              clicar el botón de modificar o añadir.
                    :param ventana: objeto  Window
                    :return: None
         """
@@ -131,18 +131,18 @@ class listaProveedores(Gtk.Window):
 
     def on_btnVolver_clicked(self, boton):
         """Vuelve a la ventana principal
-                Este metodo accede a la ventana principal
+                Este método accede a la ventana principal
 
-            :param boton: acceso al botton
+            :param botón: acceso al button
             :return: None
         """
         self.Main.show_all()
         self.ventana.hide()
 
     def on_btnModificar_clicked(self, boton):
-        """Este metodo se usa para para hacer visible el formulario y cargar el proveedor
+        """Este método se usa para para hacer visible el formulario y cargar el proveedor
                Pone visible la caja cajaModificar y carga los datos del proveedor seleccionado.
-                   :param boton: acceso al botton
+                   :param botón: acceso al button
                    :return: None
         """
         self.cajaModificar.show();
@@ -156,9 +156,9 @@ class listaProveedores(Gtk.Window):
             self.txtCorreo.set_text(modelo[punteiro][5])
 
     def on_btnBorrar_clicked(self, boton):
-        """Este metodo se usa para borrar un proveedor.
+        """Este método se usa para borrar un proveedor.
             Si hay un proveedor selecionado, borra dicho proveedor de la base de datos
-                :param boton: acceso al botton
+                :param botón: acceso al button
                 :return: None
         """
         seleccion = self.vista.get_selection()
@@ -180,9 +180,9 @@ class listaProveedores(Gtk.Window):
                 baseDatos.close()
 
     def on_btnGuardar_clicked(self, boton):
-        """Este metodo se usa para guardar los cambios en la base de datos
+        """Este método se usa para guardar los cambios en la base de datos
                 Recoge los datos del formulario y modifica el produto.
-                     :param boton: acceso al botton
+                     :param botón: acceso al button
                      :return: None
         """
         seleccion = self.vista.get_selection()

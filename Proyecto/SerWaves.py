@@ -10,8 +10,8 @@ from gi.repository import Gtk
 
 
 class SerWaves():
-    """Ventana Principal de SerWaves.
-       Metodos:
+    """Ventana Principal de SerWaves Skate Company.
+       Métodos:
             __init__ --Constructor
 
             on_btnAñadirProv_clicked -- Acceso a la ventana Añadir Proveedor
@@ -21,7 +21,7 @@ class SerWaves():
     """
 
     def __init__(self):
-        """Constructor de la Ventana Principal de SerWaves.
+        """Constructor de la Ventana Principal de SerWaves Skate Company.
            Ventana que mediante unos botones nos da acceso al resto del programa.
 
             Parametros:            No tiene.
@@ -36,7 +36,7 @@ class SerWaves():
 
         ##AÑADIMOS LA CABECERA
         cabeceira = Gtk.HeaderBar(title="SerWaves Skate Shop")
-        cabeceira.set_subtitle("Bienvenido a SerWaves")
+        cabeceira.set_subtitle("¡Bienvenido a SerWaves Skate Company!")
         cabeceira.props.show_close_button = True
 
         self.ventana.set_titlebar(cabeceira)
@@ -56,9 +56,9 @@ class SerWaves():
 
     def on_btnAñadirProv_clicked(self, boton):
         """Abre la ventana Añadir Proveedor
-                Este metodo accede a la ventana Añadir Proveedor
+                Este método accede a la ventana Añadir Proveedor
 
-            :param boton: acceso al botton
+            :param botón: acceso al button
             :return: None
         """
         self.ventana.hide()
@@ -66,9 +66,9 @@ class SerWaves():
 
     def on_btnModProv_clicked(self, boton):
         """Abre la ventana Modificar Proveedor
-                        Este metodo accede a la ventana Modificar Proveedor
+                        Este método accede a la ventana Modificar Proveedor
 
-                    :param boton: acceso al botton
+                    :param botón: acceso al button
                     :return: None
                 """
         self.ventana.hide()
@@ -76,9 +76,9 @@ class SerWaves():
 
     def on_btnFactura_clicked(self, boton):
         """Abre la ventana Crear Factura
-                Este metodo accede a la ventana Crear Factura
+                Este método accede a la ventana Crear Factura
 
-            :param boton: acceso al botton
+            :param botón: acceso al button
             :return: None
         """
         self.ventana.hide()
@@ -86,9 +86,9 @@ class SerWaves():
 
     def on_btnInventario_clicked(self, boton):
         """Abre la ventana ventana Inventario
-                Este metodo accede a la ventana Inventario
+                Este método accede a la ventana Inventario
 
-            :param boton: acceso al botton
+            :param botón: acceso al button
             :return: None
         """
         self.ventana.hide()

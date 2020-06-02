@@ -5,11 +5,11 @@ from sqlite3 import dbapi2
     Genera la base de datos y le introduce unos datos iniciales.
 """
 try:
-    ###Creacion de la base de datos.
+    ###Creación de la base de datos.
     baseDatos = dbapi2.connect("BaseDeDatos.dat")
     cursor = baseDatos.cursor()
 
-    ###Creamcion de las tablas
+    ###Creación de las tablas
     cursor.execute(
         "create table proveedores(id text, nombre text,CIF text, direccion text, telefono text, correo text)")
     cursor.execute(
@@ -18,7 +18,7 @@ try:
         "create table facturasClientes(idFactura number, nombreCliente text, telefono text, direccion text, correo text)")
     cursor.execute("create table facturasInfo(idFactura number,idProducto text, cantidad number)")
 
-    ###Rezlizamos Inserts en las tablas
+    ###Realizamos Inserts en las tablas
     cursor.execute(
         "insert into proveedores values('idprov1','Element','562-352-143','Rúa de Alexandre Bóveda','986453328','ElementUrban@gmail.com')")
     cursor.execute(
@@ -42,7 +42,7 @@ try:
     ###Realizamos commit en la BD
     baseDatos.commit()
 
-###Cremos una excepcion para lo errores y finalmente cerramos la conexion
+###Creamos una excepción para los errores y finalmente cerramos la conexión
 except (dbapi2.DatabaseError):
     print("ERROR BD")
 finally:

@@ -7,17 +7,17 @@ from sqlite3 import dbapi2
 
 class NuevoProveedor(Gtk.Window):
     """Ventana NuevoProveedor de SerWaves.
-           Metodos:
+           Métodos:
                 __init__ --Constructor
                 on_btnVolver_clicked -- Volver a la ventana pincipal
                 on_btnGuardar_clicked -- Guardamos el nuevo proveedor
     """
 
     def __init__(self, main):
-        """Constructor de la Ventana NuevoProv de SerWaves.
+        """Constructor de la Ventana NuevoProv de SerWaves Skate Company.
                   Esta ventana nos permite añadir un nuevo proveedor a nuestra tienda
 
-                   Parametros:
+                   Parámetros:
                    :param main: recibe el objeto window del main para poder volver a la ventana principal.
 
                    Excepciones:
@@ -58,9 +58,9 @@ class NuevoProveedor(Gtk.Window):
 
     def on_btnVolver_clicked(self, boton):
         """Vuelve a la ventana principal
-                Este metodo accede a la ventana principal
+                Este método accede a la ventana principal
 
-            :param boton: acceso al botton
+            :param botón: acceso al button
             :return: None
         """
         self.Main.show_all()
@@ -68,9 +68,9 @@ class NuevoProveedor(Gtk.Window):
 
     def on_btnGuardar_clicked(self, boton):
         """Guarda los proveedores en la BD.
-            Este metodo recoge los datos de los entry y los guarda en la BD.
-            Luego se genera el id a partir de el ultimpo id de la tabla.
-            :param boton: acceso al botton
+            Este método recoge los datos de los entry y los guarda en la BD.
+            Luego se genera el id a partir de el último id de la tabla.
+            :param botón: acceso al button
             :return: None
         """
         nombre = self.nombre.get_text()
@@ -96,7 +96,7 @@ class NuevoProveedor(Gtk.Window):
             except (dbapi2.DatabaseError):
                 print("ERROR EN LA BASE DE DATOS")
             finally:
-                print("Se cierra Conexion a BD")
+                print("Se cierra Conexión a BD")
                 cursor.close()
                 baseDatos.close()
 
