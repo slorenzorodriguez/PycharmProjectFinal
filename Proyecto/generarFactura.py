@@ -7,12 +7,14 @@ from reportlab.lib import colors
 
 from sqlite3 import dbapi2
 
+
 class generarFactura():
     """Clase que genera un PDF con la factura
                     Metodos:
                          __init__ --Constructor
             """
-    def __init__(self,id):
+
+    def __init__(self, id):
         """Constructor de la clase que genera una factura
                  Esta clase genera una factura con la informacion del cliente y la lista de productos que compra con el precio total
                  a pagar.
@@ -25,13 +27,13 @@ class generarFactura():
         idFactura = id
         factura = []
 
-
-        factura.append(list(['','','FACTURA DE COMPRA EN SERWAVES SKATE COMPANY','','']))
+        factura.append(list(['', '', 'FACTURA DE COMPRA EN SERWAVES SKATE COMPANY', '', '']))
         try:
             ###Conectamos con la base de datos
             baseDatos = dbapi2.connect("BaseDeDatos.dat")
             cursor = baseDatos.cursor()
-            detalles = cursor.execute("select nombreCliente,direccion,telefono,correo from facturasClientes where idFactura='"+idFactura+"'")
+            detalles = cursor.execute(
+                "select nombreCliente,direccion,telefono,correo from facturasClientes where idFactura='" + idFactura + "'")
 
             for cliente in detalles:
                 factura.append(['Nombre Cliente: ', cliente[0], '', 'Nº Factura: ', idFactura])
@@ -57,16 +59,17 @@ class generarFactura():
             total = 0
             productos = cursor.execute("select id,nombre,precioUnidad from productos")
             for producto in productos:
-                listaProductos.append([producto[0],producto[1],producto[2]])
+                listaProductos.append([producto[0], producto[1], producto[2]])
 
-            detalesFactura = cursor.execute("select idProducto,cantidad from facturasInfo where idFactura='"+idFactura+"'")
+            detalesFactura = cursor.execute(
+                "select idProducto,cantidad from facturasInfo where idFactura='" + idFactura + "'")
             for pro in detalesFactura:
                 for prod in listaProductos:
-                    if (prod[0]==pro[0]):
-                        precio=int(pro[1])*float(prod[2])
-                        factura.append([prod[0],prod[1],pro[1],prod[2],precio])
+                    if (prod[0] == pro[0]):
+                        precio = int(pro[1]) * float(prod[2])
+                        factura.append([prod[0], prod[1], pro[1], prod[2], precio])
                 total = total + precio
-            factura.append(['','','','PRECIO TOTAL:',str(total)+" €"])
+            factura.append(['', '', '', 'PRECIO TOTAL:', str(total) + " €"])
         except (dbapi2.DatabaseError):
             print("ERROR BD")
         finally:
@@ -81,25 +84,26 @@ class generarFactura():
 
         taboa = Table(factura, colWidths=90, rowHeights=30)
         taboa.setStyle(TableStyle([
-                ('TEXTCOLOR', (0, 0), (-1, -1), colors.darkgreen),
+            ('TEXTCOLOR', (0, 0), (-1, -1), colors.darkgreen),
 
-                ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
+            ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
 
-                ('ALIGN', (2, 5), (-1, -1), 'RIGHT'),
+            ('ALIGN', (2, 5), (-1, -1), 'RIGHT'),
 
-                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
 
-                ('BOX', (0, 1), (-1, 4), 1, colors.black),
+            ('BOX', (0, 1), (-1, 4), 1, colors.black),
 
-                ('BOX', (0, 6), (-1, -2), 1, colors.black),
+            ('BOX', (0, 6), (-1, -2), 1, colors.black),
 
-                ('INNERGRID', (0, 6), (-1, -2), 0.5, colors.grey)
-            ]))
+            ('INNERGRID', (0, 6), (-1, -2), 0.5, colors.grey)
+        ]))
 
         guion.append(taboa)
         guion.append(PageBreak())
 
         doc.build(guion)
+
 
 if __name__ == "__main__":
     generarFactura()

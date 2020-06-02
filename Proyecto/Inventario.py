@@ -58,15 +58,14 @@ class Inventario(Gtk.Window):
             self.listaProveedores = []
             proveedores = cursor.execute("select id,nombre from proveedores")
             for proveedor in proveedores:
-                self.listaProveedores.append([proveedor[0],proveedor[1]])
+                self.listaProveedores.append([proveedor[0], proveedor[1]])
                 self.proveedoresCMB.append([proveedor[1]])
-
 
             productos = cursor.execute("select * from productos")
             for producto in productos:
                 for prov in self.listaProveedores:
-                    if (prov[0]==producto[5]):
-                        self.modelo.append([producto[0],producto[1],producto[2],producto[3],producto[4],prov[1]])
+                    if (prov[0] == producto[5]):
+                        self.modelo.append([producto[0], producto[1], producto[2], producto[3], producto[4], prov[1]])
         except (dbapi2.DatabaseError):
             print("ERROR BD")
         finally:
@@ -91,7 +90,7 @@ class Inventario(Gtk.Window):
         self.vista.append_column(columnaStock)
 
         celdaText4 = Gtk.CellRendererText(xalign=1)
-        columnaPrecio = Gtk.TreeViewColumn('Precio/Unidad', celdaText4,text=4)
+        columnaPrecio = Gtk.TreeViewColumn('Precio/Unidad', celdaText4, text=4)
         columnaPrecio.set_sort_column_id(3)
         self.vista.append_column(columnaPrecio)
 
@@ -175,7 +174,7 @@ class Inventario(Gtk.Window):
                  :return: None
         """
         self.cajaModificar.show();
-        self.añadir=True
+        self.añadir = True
 
     def on_btnModificar_clicked(self, boton):
         """Este metodo se usa para para hacer visible el formulario y cargar el producto
@@ -205,7 +204,7 @@ class Inventario(Gtk.Window):
                    :param boton: acceso al botton
                    :return: None
         """
-        if(self.añadir==True):
+        if (self.añadir == True):
             ##Conectamos con la base de datos
             try:
                 baseDatos = dbapi2.connect("BaseDeDatos.dat")
@@ -225,7 +224,8 @@ class Inventario(Gtk.Window):
                     for prov in self.listaProveedores:
                         if (prov[1] == proveedor):
                             idProv = prov[0]
-                    cursor.execute("insert into productos values('" + idNuevo + "','" + nombre + "','" + descripcion + "','" + stock + "','" + precio + "','" + idProv + "')")
+                    cursor.execute(
+                        "insert into productos values('" + idNuevo + "','" + nombre + "','" + descripcion + "','" + stock + "','" + precio + "','" + idProv + "')")
                     baseDatos.commit()
                     print("PRODUCTO AÑADIDO CON EXITO")
                     self.modelo.append([idNuevo, nombre, descripcion, int(stock), float(precio), prov[1]])
@@ -246,7 +246,7 @@ class Inventario(Gtk.Window):
                 precio = self.txtPrecio.get_text()
                 indiceProveedor = self.cmbProveedores.get_active_iter()
                 proveedor = self.cmbProveedores.get_model()[indiceProveedor][0]
-                if(nombre=="" or descripcion=="" or stock=="" or precio=="" or proveedor==""):
+                if (nombre == "" or descripcion == "" or stock == "" or precio == "" or proveedor == ""):
                     print("No se han completado todos los campos")
                 else:
                     for prov in self.listaProveedores:
@@ -298,13 +298,14 @@ class Inventario(Gtk.Window):
                 cursor.close()
                 baseDatos.close()
 
-    def on_btnGenerarInventario_clicked(self,boton):
+    def on_btnGenerarInventario_clicked(self, boton):
         """Este metodo se usa para generar un informe con los productos de la tienda.
             Se llama a la clase informeInventario que leera los datos de la base de datos y generara un PDF.
                     :param boton: acceso al botton
                     :return: None
         """
         generarInventario()
+
 
 if __name__ == "__main__":
     Inventario()
